@@ -4,9 +4,9 @@ This Health Companion WebApp is a comprehensive tool designed to empower users i
 
 ### Website and App
 
-https://github.com/prashantzzz/AIMED/assets/60565847/11468619-347f-490d-8145-2d7d5078260d
+https://github.com/prashantzzz/cureAI/assets/60565847/11468619-347f-490d-8145-2d7d5078260d
 
-<a href="https://prashantzzz.github.io/AIMED/" class="button-84" role="button">Website</a>  <a href="https://www.upload-apk.com/daN7mWgvAnh10VM" class="button-84" role="button">App</a>
+<a href="https://prashantzzz.github.io/cureAI/" class="button-84" role="button">Website</a>  <a href="https://www.upload-apk.com/daN7mWgvAnh10VM" class="button-84" role="button">App</a>
 
 ## Features
 
@@ -25,10 +25,15 @@ To use the Health Companion App use Simply visit the hosted link as given beside
 
 To run locally:
 ```bash
-git clone https://github.com/prashantzzz/AIMED.git
+git clone https://github.com/prashantzzz/cureAI.git
 ```
-Run npm i
+Run:
+ 
+```bash
+npm i
 node server.js
+```
+
 Then open: localhost:3000 in your browser
 
 ## Contributing
