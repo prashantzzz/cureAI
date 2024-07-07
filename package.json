@@ -1,0 +1,32 @@
+{
+  "name": "aimed",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/prashantzzz/AIMED.git",
+  "author": "Prashant <prashant2003prashant@gmail.com>",
+  "devDependencies": {
+    "@gradio/client": "^0.14.0",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.1",
+    "webpack": "^5.82.1",
+    "webpack-cli": "^5.1.1"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.0",
+    "@google-cloud/vision": "^4.1.0",
+    "@huggingface/inference": "^2.7.0",
+    "appwrite": "^13.0.2",
+    "daisyui": "^2.51.6",
+    "express": "^4.19.2",
+    "jquery": "^3.7.0",
+    "multer": "^1.4.5-lts.1",
+    "qrcode": "^1.5.3",
+    "scrollreveal": "^4.0.9",
+    "tesseract.js": "^5.0.5"
+  },
+  "scripts": {
+    "build": "webpack",
+    "build-css": "tailwindcss -i ./src/index.css -o ./dist/assets/css/style.css --watch"
+  }
+}

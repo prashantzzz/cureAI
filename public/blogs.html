@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>AIMED Blogs</title>
+	<meta name="author" content="name" />
+	<meta name="description" content="description here" />
+	<meta name="keywords" content="keywords,here" />
+	<link rel="icon" type="image/png" sizes="32x32" href=".\src\img\aimed-icon.png" />
+	<link rel="stylesheet" href="./dist/assets/css/style.css" />
+	<link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+		integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<style>
+		:root {
+			::-webkit-scrollbar {
+				height: 10px;
+				width: 10px;
+			}
+
+			::-webkit-scrollbar-track {
+				background: #efefef;
+				border-radius: 6px;
+			}
+
+			::-webkit-scrollbar-thumb {
+				background: #d5d5d5;
+				border-radius: 6px;
+			}
+
+			::-webkit-scrollbar-thumb:hover {
+				background: #c4c4c4;
+			}
+		}
+
+		/* Tailwind CSS for Google Translate dropdown */
+	</style>
+</head>
+
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+	
+	<!--Header-->
+	<header id="app-header"></header>
+	<script async src="./js/header.js"></script>  
+
+	<div class="w-full m-0 p-0 bg-cover bg-bottom" style="
+        background-image: url('./src/img/cover.jpg');
+        height: 60vh;
+        max-height: 460px;
+      ">
+		<div class="font-extrabold container max-w-4xl mx-auto pt-40 md:pb-16 text-center">
+			<div class="text-white text-2xl md:text-5xl sm:text-4xl">
+				AIMED BLOGS
+			</div>
+			<p class="text-xl md:text-2xl text-gray-300">
+				Trending Healthcare Blogs
+			</p>
+		</div>
+	</div>
+
+	<!--Container-->
+	<div class="container px-4 md:px-0 max-w-6xl mx-auto -mt-32">
+		<div class="mx-0 sm:mx-6">
+			<div class="bg-gray-200 w-full text-xl md:text-2xl text-gray-800 leading-normal rounded-t">
+				<!--Lead Card-->
+				<div class="flex h-full bg-white rounded overflow-hidden shadow-lg">
+					<a href="" class="flex flex-wrap no-underline hover:no-underline">
+						<div class="w-full md:w-2/3 rounded-t">
+							<img src="https://source.unsplash.com/800x600/?blog" class="h-full w-full shadow" />
+						</div>
+
+						<div class="w-full md:w-1/3 flex flex-col flex-grow flex-shrink">
+							<div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg">
+								<p class="w-full text-gray-600 text-xs md:text-sm pt-6 px-6">
+									GETTING STARTED
+								</p>
+								<div class="w-full font-bold text-xl text-gray-900 px-6">
+									👋 Welcome fellow AI-MED users
+								</div>
+								<p class="text-gray-800 font-serif text-base px-6 mb-5">
+									This is a blog page where you will find blogs and recipies
+									related to healthcare.
+								</p>
+							</div>
+
+							<div
+								class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow-lg p-6">
+								<div class="flex items-center justify-between">
+									<img class="w-8 h-8 rounded-full mr-4 avatar" data-tippy-content="Author Name"
+										src="http://i.pravatar.cc/300" alt="Avatar of Author" />
+									<p class="text-gray-600 text-xs md:text-sm">By AIMED</p>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<!--/Lead Card-->
+
+				<!--Posts Container-->
+				<div class="flex flex-wrap justify-between pt-12 -mx-6">
+					<!--1/3 col -->
+					<div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+						<div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg">
+							<a href="#" class="flex flex-wrap no-underline hover:no-underline">
+								<img src="https://source.unsplash.com/800x400/?healthy+food"
+									class="h-64 w-full rounded-t pb-6" />
+								<p class="w-full text-gray-600 text-xs md:text-sm px-6">
+									GETTING STARTED
+								</p>
+								<div class="w-full font-bold text-xl text-gray-900 px-6">
+									The Power of Superfoods: Boost Your Health Naturally
+								</div>
+								<p class="text-gray-800 font-serif text-base px-6 mb-5">
+									Dive into the world of superfoods and discover how
+									incorporating them into your diet can enhance your overall
+									health and well-being.
+								</p>
+							</a>
+						</div>
+						<div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow-lg p-6">
+							<div class="flex items-center justify-between">
+								<img class="w-8 h-8 rounded-full mr-4 avatar" data-tippy-content="Author Name"
+									src="http://i.pravatar.cc/300" alt="Avatar of Author" />
+								<p class="text-gray-600 text-xs md:text-sm">1 MIN READ</p>
+							</div>
+						</div>
+					</div>
+
+					<!--1/3 col -->
+					<div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+						<div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg">
+							<a href="#" class="flex flex-wrap no-underline hover:no-underline">
+								<img src="https://source.unsplash.com/800x400/?soul"
+									class="h-64 w-full rounded-t pb-6" />
+								<p class="w-full text-gray-600 text-xs md:text-sm px-6">
+									GETTING STARTED
+								</p>
+								<div class="w-full font-bold text-xl text-gray-900 px-6">
+									Unlocking the Benefits of Mindful Eating: A Guide to
+									Nourishing Your Body and Soul
+								</div>
+								<p class="text-gray-800 font-serif text-base px-6 mb-5">
+									Explore the concept of mindful eating and learn how it can
+									transform your relationship with food, leading to improved
+									digestion, reduced stress, and greater satisfaction with
+									meals.
+								</p>
+							</a>
+						</div>
+						<div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow-lg p-6">
+							<div class="flex items-center justify-between">
+								<img class="w-8 h-8 rounded-full mr-4 avatar" data-tippy-content="Author Name"
+									src="http://i.pravatar.cc/300" alt="Avatar of Author" />
+								<p class="text-gray-600 text-xs md:text-sm">1 MIN READ</p>
+							</div>
+						</div>
+					</div>
+
+					<!--1/3 col -->
+					<div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+						<div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg">
+							<a href="#" class="flex flex-wrap no-underline hover:no-underline">
+								<img src="https://source.unsplash.com/800x400/?yoga"
+									class="h-64 w-full rounded-t pb-6" />
+								<p class="w-full text-gray-600 text-xs md:text-sm px-6">
+									GETTING STARTED
+								</p>
+								<div class="w-full font-bold text-xl text-gray-900 px-6">
+									Exercise Essentials: Building a Sustainable Fitness Routine
+									for Long-Term Health
+								</div>
+								<p class="text-gray-800 font-serif text-base px-6 mb-5">
+									Discover the key components of a well-rounded fitness
+									routine and learn how to create one that fits your
+									lifestyle, goals, and preferences.
+								</p>
+							</a>
+						</div>
+						<div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow-lg p-6">
+							<div class="flex items-center justify-between">
+								<img class="w-8 h-8 rounded-full mr-4 avatar" data-tippy-content="Author Name"
+									src="http://i.pravatar.cc/300" alt="Avatar of Author" />
+								<p class="text-gray-600 text-xs md:text-sm">1 MIN READ</p>
+							</div>
+						</div>
+					</div>
+
+					<!--1/2 col -->
+					<div class="w-full md:w-1/2 p-6 flex flex-col flex-grow flex-shrink">
+						<div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg">
+							<a href="#" class="flex flex-wrap no-underline hover:no-underline">
+								<img src="https://source.unsplash.com/800x600/?brain+neurons"
+									class="h-full w-full rounded-t pb-6" />
+								<p class="w-full text-gray-600 text-xs md:text-sm px-6">
+									GETTING STARTED
+								</p>
+								<div class="w-full font-bold text-xl text-gray-900 px-6">
+									The Gut-Brain Connection: How Your Gut Health Impacts Mental
+									Well-Being
+								</div>
+								<p class="text-gray-800 font-serif text-base px-6 mb-5">
+									Delve into the fascinating relationship between gut health
+									and mental health, exploring how the gut microbiome
+									influences mood, cognition, and overall brain function.
+								</p>
+							</a>
+						</div>
+						<div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow-lg p-6">
+							<div class="flex items-center justify-between">
+								<img class="w-8 h-8 rounded-full mr-4 avatar" data-tippy-content="Author Name"
+									src="http://i.pravatar.cc/300" alt="Avatar of Author" />
+								<p class="text-gray-600 text-xs md:text-sm">1 MIN READ</p>
+							</div>
+						</div>
+					</div>
+
+					<!--1/2 col -->
+					<div class="w-full md:w-1/2 p-6 flex flex-col flex-grow flex-shrink">
+						<div class="flex-1 flex-row bg-white rounded-t rounded-b-none overflow-hidden shadow-lg">
+							<a href="#" class="flex flex-wrap no-underline hover:no-underline">
+								<img src="https://source.unsplash.com/800x600/?vegitable"
+									class="h-full w-full rounded-t pb-6" />
+								<p class="w-full text-gray-600 text-xs md:text-sm px-6">
+									GETTING STARTED
+								</p>
+								<div class="w-full font-bold text-xl text-gray-900 px-6">
+									Fueling Your Body for Success: Healthy Eating Tips for Busy
+									Professionals
+								</div>
+								<p class="text-gray-800 font-serif text-base px-6 mb-5">
+									Get practical advice on maintaining a nutritious diet amidst
+									a hectic schedule, with tips for meal planning, healthy
+									snacking, and making nutritious choices on the go.
+								</p>
+							</a>
+						</div>
+						<div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow-lg p-6">
+							<div class="flex items-center justify-between">
+								<img class="w-8 h-8 rounded-full mr-4 avatar" data-tippy-content="Author Name"
+									src="http://i.pravatar.cc/300" alt="Avatar of Author" />
+								<p class="text-gray-600 text-xs md:text-sm">1 MIN READ</p>
+							</div>
+						</div>
+					</div>
+
+					<!--2/3 col -->
+					<div class="w-full md:w-2/3 p-6 flex flex-col flex-grow flex-shrink">
+						<div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg">
+							<a href="#" class="flex flex-wrap no-underline hover:no-underline">
+								<img src="https://source.unsplash.com/800x600/?cooking"
+									class="h-full w-full rounded-t pb-6" />
+								<p class="w-full text-gray-600 text-xs md:text-sm px-6">
+									GETTING STARTED
+								</p>
+								<div class="w-full font-bold text-xl text-gray-900 px-6">
+									Mastering Meal Prep: Simplify Your Week with Batch Cooking
+									and Pre-Planned Meals
+								</div>
+								<p class="text-gray-800 font-serif text-base px-6 mb-5">
+									Learn the art of meal prep and discover how it can save you
+									time, money, and stress while helping you stay on track with
+									your health and nutrition goals.
+								</p>
+							</a>
+						</div>
+						<div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow-lg p-6">
+							<div class="flex items-center justify-between">
+								<img class="w-8 h-8 rounded-full mr-4 avatar" data-tippy-content="Author Name"
+									src="http://i.pravatar.cc/300" alt="Avatar of Author" />
+								<p class="text-gray-600 text-xs md:text-sm">1 MIN READ</p>
+							</div>
+						</div>
+					</div>
+
+					<!--1/3 col -->
+					<div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+						<div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg">
+							<a href="#" class="flex flex-wrap no-underline hover:no-underline">
+								<img src="https://source.unsplash.com/800x600/?symptom"
+									class="h-full w-full rounded-t pb-6" />
+								<p class="w-full text-gray-600 text-xs md:text-sm px-6">
+									GETTING STARTED
+								</p>
+								<div class="w-full font-bold text-xl text-gray-900 px-6">
+									Navigating Food Allergies and Sensitivities: Tips for
+									Identifying Triggers and Managing Symptoms
+								</div>
+								<p class="text-gray-800 font-serif text-base px-6 mb-5">
+									Gain insights into identifying and managing food allergies
+									and sensitivities, with strategies for navigating restaurant
+									menus, reading food labels, and finding alternative
+									ingredients.
+								</p>
+							</a>
+						</div>
+						<div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow-lg p-6">
+							<div class="flex items-center justify-between">
+								<img class="w-8 h-8 rounded-full mr-4 avatar" data-tippy-content="Author Name"
+									src="http://i.pravatar.cc/300" alt="Avatar of Author" />
+								<p class="text-gray-600 text-xs md:text-sm">1 MIN READ</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--/ Post Content-->
+			</div>
+			<!--Subscribe-->
+			<div class="container font-sans bg-green-100 rounded mt-8 p-4 md:p-24 text-center">
+				<h2 class="font-bold break-normal text-2xl md:text-4xl">
+					Subscribe to AIMED
+				</h2>
+				<h3 class="break-normal font-normal text-gray-600 text-base md:text-xl">
+					Get the latest posts delivered right to your inbox
+				</h3>
+				<div class="w-full text-center pt-4">
+					<form action="#">
+						<div class="max-w-xl mx-auto p-1 pr-0 flex flex-wrap items-center">
+							<input type="email" placeholder="youremail@example.com"
+								class="flex-1 appearance-none rounded shadow p-3 text-gray-600 mr-2 focus:outline-none" />
+							<button type="submit"
+								class="flex-1 mt-4 md:mt-0 py-3 mb-3.5 block md:inline-block appearance-none bg-green-500 text-white text-base font-semibold tracking-wider uppercase rounded shadow hover:bg-green-400">
+								Subscribe
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!-- /Subscribe-->
+
+			<!--Author-->
+			<div class="flex w-full items-center font-sans p-8 md:p-24">
+				<img class="w-10 h-10 rounded-full mr-4" src="./src/img/aimed-icon.png" alt="Avatar of Author" />
+				<div class="flex-1">
+					<p class="text-base font-bold md:text-xl leading-none text-black">
+						AIMED
+					</p>
+					<p class="text-gray-600 text-xs md:text-base">
+						by
+						<a class="text-gray-800 hover:text-green-500 no-underline border-b-2 border-green-500"
+							href="https://www.linkedin.com/in/prashantzz/">Prashant</a>
+					</p>
+				</div>
+				<div class="justify-end">
+					<a href="./" class="bg-transparent border border-gray-500 hover:border-green-500 text-xs text-gray-500 hover:text-green-500 font-bold py-2 px-4 rounded-full">Try
+						Features</a>
+				</div>
+			</div>
+			<!--/Author-->
+		</div>
+	</div>
+
+	<header id="app-footer"></header>
+	<script async src="./js/footer.js"></script>  
+
+	<script async src="dist/bundle.js"></script>
+	<header id="app-phone-nav"></header>
+	<script async src="./js/phone-nav.js"></script>  
+
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+	<script src="https://unpkg.com/tippy.js@6"></script>
+	<script>
+		//Init tooltips
+		tippy(".avatar");
+	</script>
+	<script type="text/javascript">
+		function googleTranslateElementInit() {
+			new google.translate.TranslateElement(
+				{
+					pageLanguage: "en",
+					ignoreWords: "prescription,aimed,AI-MED,WHO",
+					includedLanguages: "en,hi,bn,te,mr,ta,ur,gu,kn,or,ml,pa,fra,zho", 
+				},
+				"google_translate_element"
+			);
+		}
+	</script>
+	<script type="text/javascript"
+		src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+	
+</body>
+
+</html>

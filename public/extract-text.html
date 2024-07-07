@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIMED Scan</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="icon" type="image/png" sizes="32x32" href=".\src\img\aimed-icon.png" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./dist/assets/css/style.css" />
+</head>
+
+<style>
+  /* Hide the image when src attribute is empty */
+  img[src=""] {
+    display: none;
+  }
+
+  progress {
+    appearance: none;
+    width: 100%;
+    height: 15px;
+    /* Adjust height as needed */
+    border-radius: 9999px;
+    /* Large value for rounded corners */
+    background-color: #e5e7eb;
+    /* Background color */
+    overflow: hidden;
+    /* Hide the default border */
+  }
+
+  /* Style for the progress bar */
+  progress::-webkit-progress-bar {
+    background-color: transparent;
+    /* Transparent background for the progress bar */
+  }
+
+  /* Style for the progress value */
+  progress::-webkit-progress-value {
+    background-color: #3b82f6;
+    /* Progress bar color */
+    border-radius: 9999px;
+    /* Large value for rounded corners */
+  }
+ 
+  /* Additional styles for the progress */
+  progress[value="1"]::-webkit-progress-value {
+    opacity: 0.5;
+    /* Adjust opacity as needed */
+  }
+  
+  :root {
+    ::-webkit-scrollbar {
+      height: 10px;
+      width: 10px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #efefef;
+      border-radius: 6px
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #d5d5d5;
+      border-radius: 6px
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #c4c4c4
+    }
+  }
+</style>
+
+<body class="bg-gray-100">
+
+	<!--Header-->
+	<header id="app-header"></header>
+	<script async src="./js/header.js"></script>  
+
+  <div class="w-full m-0 p-0 bg-cover bg-bottom"
+    style="background-image: url('./src/img/cover.jpg'); max-height: 2100px">
+    <div class="font-extrabold container max-w-4xl mx-auto pt-28 pb-6 md:pb-10 text-center">
+      <div class="text-white text-2xl md:text-5xl sm:text-4xl">
+        Analyze Prescription
+      </div>
+      <p class="text-xl md:text-2xl text-gray-300">
+        Upload digital prescription
+      </p>
+    </div>
+  </div>
+
+  <main class="container mx-auto px-4 py-8">
+    <!-- Grid for parallel div blocks -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <!-- Div for input image and display -->
+      <div class="bg-white rounded-lg p-4 whitespace-normal">
+        <div class="box">
+          <input type="file" name="file-1[]" id="file-1" class="inputfile inputfile-1 hidden"
+            data-multiple-caption="{count} files selected" multiple />
+          <label for="file-1" class="ds-btn ds-btn-primary ds-btn-wide block w-full mb-4">
+            <span>Choose a file</span>
+          </label>
+          <div class="image-container bg-gray-200 rounded-lg overflow-hidden">
+            <img id="selected-image" src="" class="max-h-80" alt="Selected Image" />
+          </div>
+          <button id="analyze-it" class="ds-btn ds-btn-primary ds-btn-wide block w-full my-2 hidden">
+            Analyze It!
+          </button>
+        </div>
+      </div>
+      <!-- Div for selecting language and showing the extracted text -->
+      <div id="log" class="bg-white rounded-lg p-4 whitespace-normal">
+        <span id="startPre" class="block text-center whitespace-normal">
+          <button id="startLink" class="ds-btn ds-btn-primary ds-btn-wide block w-full mb-4">
+            Extract Text
+          </button>
+          Choose language in the prescription
+        </span>
+
+        <select id="langsel" title="select-lang"
+          class="w-full border border-gray-300 rounded-md py-2 px-4 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+          <option value="eng" selected>English</option>
+          <option value="spa">Spanish</option>
+          <option value="fra">French</option>
+          <option value="deu">German</option>
+          <option value="ita">Italian</option>
+          <option value="por">Portuguese</option>
+          <option value="rus">Russian</option>
+          <option value="hin">Hindi</option>
+          <option value="zho">Chinese</option>
+          <option value="jpn">Japanese</option>
+          <option value="kor">Korean</option>
+          <option value="ara">Arabic</option>
+          <option value="tur">Turkish</option>
+        </select>
+        <div id="loading-animation" class="hidden w-full flex justify-center items-center p-2">
+          <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+	<header id="app-footer"></header>
+	<script async src="./js/footer.js"></script>  
+
+  <script async src="dist/bundle.js"></script>
+	<header id="app-phone-nav"></header>
+	<script async src="./js/phone-nav.js"></script>  
+
+  <script type="importmap">
+      {
+        "imports": {
+          "@google/generative-ai": "https://esm.run/@google/generative-ai"
+        }
+      }
+    </script>
+  <script type="module">
+    import { GoogleGenerativeAI } from "@google/generative-ai";
+    const API_KEY = "AIzaSyDkOS4Xjuy3F3xYdV_nXnsEU_HEhxZPmgw";
+    const genAI = new GoogleGenerativeAI(API_KEY);
+
+    async function analyzeText() {
+      const txt = document.getElementById("log").textContent;
+      document.getElementById("log").textContent = "Loading insights...";
+      const prompt = `Below is the text from a medical prescription, extract medicine names, dosage and other essential info from it(if present): ${txt}. Mention usage, side effects of the medicines prescribed(if any).`;
+      console.log(txt);
+      // Show loading animation
+      //document.getElementById("loading-animation").classList.remove("hidden");
+
+      try {
+        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        let text = await response.text();
+
+        // Replace special characters
+        text = text.replace(/\*\*/g, "");
+        text = text.replace(/\*/g, "&diams;");
+
+        // Split text into lines
+        const lines = text.split("\n");
+
+        // Format each line with tabs and convert to HTML
+        const formattedLines = lines.map((line) => {
+          // Count leading spaces (tabs)
+          const tabs = (line.match(/^\s*/)[0] || "").replace(
+            / /g,
+            "&nbsp;&nbsp;"
+          );
+          // Remove leading spaces and convert to HTML
+          return `${tabs}${line.trim()}`;
+        });
+
+        // Display the output in the 'log' div
+        document.getElementById("log").innerHTML =
+          formattedLines.join("<br>");
+      } catch (error) {
+        // Display the error message
+        document.getElementById(
+          "log"
+        ).textContent = `Error: ${error.message.replace(
+          "[GoogleGenerativeAI Error]:",
+          ""
+        )}`;
+      } finally {
+        // Hide loading animation
+        //document.getElementById("loading-animation").classList.add("hidden");
+      }
+    }
+
+    document
+      .getElementById("analyze-it")
+      .addEventListener("click", analyzeText);
+  </script>
+	<script type="text/javascript">
+		function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+			      ignoreWords: 'prescription,aimed,AI-MED,WHO',
+            includedLanguages: 'en,hi,bn,te,mr,ta,ur,gu,kn,or,ml,pa,fra,zho' // Add the languages you want to include, separated by commas
+        }, 'google_translate_element');
+    };
+	</script>
+	
+	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="./js/fontawesome-4414288e8e.js"></script>
+  <script src="js/tesseract.min.js"></script>
+  <script src="js/tesseract-ocr.js"></script>
+</body>
+
+</html>
