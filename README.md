@@ -13,6 +13,9 @@ https://github.com/prashantzzz/cureAI/assets/60565847/11468619-347f-490d-8145-2d
 ### `1. Disease Prediction`
 The webapp includes an interface for detecting and predicting diseases based on user's symptoms. Additionally, it offers personalized diet and food recommendations tailored to each user's specific health conditions and nutritional needs, facilitating optimal health management and disease prevention.
 
+### `3. Medical tool help`
+Users can upload any medical tool images and it automatically lists the name of the device, youtube links, website links and link to search it on google.
+
 ### `2. Prescription / Medicine Analysis`
 Users can analyze dctor's prescription & medicine images and it automatically lists the uses and side effects of the medicine and suggests alternative options based on user preferences and medical history, ensuring informed decision-making regarding medication choices.
 
@@ -28,7 +31,7 @@ To run locally:
 git clone https://github.com/prashantzzz/cureAI.git
 ```
 Run:
- 
+
 ```bash
 npm i
 node server.js
