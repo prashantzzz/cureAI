@@ -9,13 +9,13 @@ This Health Companion WebApp is a comprehensive tool designed to empower users i
 ### `1. Disease Prediction`
 The webapp includes an interface for detecting and predicting diseases based on user's symptoms. Additionally, it offers personalized diet and food recommendations tailored to each user's specific health conditions and nutritional needs, facilitating optimal health management and disease prevention.
 
-### `3. Medical tool help`
+### `2. Medical tool help`
 Users can upload any medical tool images and it automatically lists the name of the device, youtube links, website links and link to search it on google.
 
-### `2. Prescription / Medicine Analysis`
+### `3. Prescription / Medicine Analysis`
 Users can analyze dctor's prescription & medicine images and it automatically lists the uses and side effects of the medicine and suggests alternative options based on user preferences and medical history, ensuring informed decision-making regarding medication choices.
 
-### `3. Tech in Health Articles`
+### `4. Tech in Health Articles`
 It provides access to a collection of health articles aimed at promoting a healthy lifestyle in a technological way. Users can explore articles covering various topics such as mental health, tech advancements in the field of Health and preventive care to stay informed and inspired on their wellness journey.
 
 ## Usage
