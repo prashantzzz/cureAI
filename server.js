@@ -19,7 +19,7 @@ function rem_dup(sentence) {
 }
 
 app.use(express.static(path.join(__dirname, 'public')));
-
+ 
 // Endpoint to handle image upload
 app.post('/upload', upload.single('image'), async (req, res) => {
     try {
@@ -66,12 +66,12 @@ app.listen(PORT, '0.0.0.0', () => {
     const url = `http://${ipv4Address}:${PORT}`;
     console.log(`Server running on ${url}`);
     
-    qrcode.toString(url, { type: 'terminal' }, (err, qr) => {
-        if (err) {
-            console.error('Failed to generate QR code', err);
-        } else {
-            console.log('Scan the following QR code to access the server:');
-            console.log(qr);
-        }
-    });
+    // qrcode.toString(url, { type: 'terminal' }, (err, qr) => {
+    //     if (err) {
+    //         console.error('Failed to generate QR code', err);
+    //     } else {
+    //         console.log('Scan the following QR code to access the server:');
+    //         console.log(qr);
+    //     }
+    // });
 });

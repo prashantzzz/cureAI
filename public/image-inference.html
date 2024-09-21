@@ -81,7 +81,7 @@
 
   <!--Header-->
   <header id="app-header"></header>
-  <script async src="./js/header.js"></script>
+  <script async src="./js/headerforscan.js"></script>
 
   <div class="w-full m-0 p-0 bg-cover bg-bottom"
     style="background-image:url('./src/img/cover.jpg'); max-height:2100px;">
@@ -117,7 +117,6 @@
             <span id="startPre" class="block  whitespace-normal">
               <div id="result"></div>
             </span>
-
 
             <button id="analyze-it" class="ds-btn ds-btn-primary ds-btn-wide my-4  hidden">Analyze it</button>
             <div id="loading-animation" class="hidden">
@@ -178,6 +177,13 @@
 
           </div>
     </main>
+
+    <header id="app-footer"></header>
+    <script async src="./js/footer.js"></script>  
+
+    <script async src="dist/bundle.js"></script>
+    <header id="app-phone-nav"></header>
+    <script async src="./js/phone-nav.js"></script>  
 
     <script>
       // JavaScript for image handling
@@ -256,7 +262,6 @@
         }
       });
 
-
       document.getElementById('imageForm').addEventListener('submit', async function (event) {
         event.preventDefault();
         const imageInput = document.getElementById('imageInput');
@@ -286,13 +291,6 @@
       });
     </script>
 
-    <header id="app-footer"></header>
-    <script async src="./js/footer.js"></script>
-
-    <script async src="dist/bundle.js"></script>
-    <header id="app-phone-nav"></header>
-    <script async src="./js/phone-nav.js"></script>
-
     <script type="text/javascript">
       function googleTranslateElementInit() {
         new google.translate.TranslateElement({
@@ -320,8 +318,8 @@
       let text1 = "";
       async function analyzeText() {
 
-        let txt = document.getElementById("result").textContent;
-        const prompt = `Extract the medical tool name from "${txt}" and mention steps to use that tool, and give website and video tutorial links(if present).
+      let txt = document.getElementById("result").textContent;
+      const prompt = `Extract the medical tool name from "${txt}" and mention steps to use that tool, and give website and video tutorial links(if present).
       Respond in the following json format:
       {
         "tool_name": "",
@@ -353,7 +351,7 @@
         ]
       }
 
-      If it is not a medical tool, reply with 'Not a medical tool!'`;
+      If it is not a medical tool, set "tool_name": "Not a medical tool!"`;
 
         // Show loading animation
         document.getElementById("loading-animation").classList.remove("hidden");
@@ -364,8 +362,11 @@
           const result = await model.generateContent(prompt);
           const response = await result.response;
           text1 = await response.text();
-          // console.log("AI Returned: " + text1);
-          if (text1 == "Not a medical tool!") return;
+          console.log("AI Returned: " + text1);
+          if (text1 == "Not a medical tool!") {
+            alert("Not a medical tool!");
+            return;
+          }
 
           
           document.getElementById("toolcard").classList.remove("hidden");
@@ -377,6 +378,10 @@
             document.getElementById("result").textContent = `Error: Couldn't analyze, please retry or try a new image.`;
           }
 
+          if (jsonData.tool_name == "Not a medical tool!") {
+            alert("Upload a medical tool!");
+            return;
+          }
           document.getElementById("toolName").innerText = jsonData.tool_name;
           // console.log(jsonData.tool_name);
 
@@ -408,7 +413,6 @@
           googleSearchLi.appendChild(googleSearchLink);
           websiteLinks.appendChild(googleSearchLi);
 
-
           const videoLinks = document.getElementById("videoLinks");
           videoLinks.innerHTML = ''; // Clear previous entries
           jsonData.video_tutorial_links.forEach(link => {
@@ -420,6 +424,7 @@
             li.appendChild(a);
             videoLinks.appendChild(li);
           });
+
           // Creating a link to search YouTube based on the tool name
           const youtubeSearchLi = document.createElement("li");
           const youtubeSearchLink = document.createElement("a");
@@ -428,7 +433,6 @@
           youtubeSearchLink.target = "_blank";
           youtubeSearchLi.appendChild(youtubeSearchLink);
           videoLinks.appendChild(youtubeSearchLi);
-
 
         } catch (error) {
           // Display the error message

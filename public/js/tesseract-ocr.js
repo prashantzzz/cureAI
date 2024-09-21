@@ -1,5 +1,3 @@
-// script.js
-
 $(document).ready(function() {
     var inputs = document.querySelectorAll('.inputfile');
     Array.prototype.forEach.call(inputs, function(input) {
@@ -16,24 +14,16 @@ $(document).ready(function() {
             if (fileName) {
                 label.querySelector('span').innerHTML = fileName;
 
-                let reader = new FileReader();
-                reader.onload = function () {
-                    let dataURL = reader.result;
-                    $("#selected-image").attr("src", dataURL);
-                }
                 let file = this.files[0];
-                reader.readAsDataURL(file);
                 recognizeAndResizeImage(file);
             } else {
                 label.innerHTML = labelVal;
-
                 $("#log").empty();
             }
         });
 
-        // Firefox bug fix
-        input.addEventListener('focus', function () { input.classList.add('has-focus'); });
-        input.addEventListener('blur', function () { input.classList.remove('has-focus'); });
+        input.addEventListener('focus', function() { input.classList.add('has-focus'); });
+        input.addEventListener('blur', function() { input.classList.remove('has-focus'); });
     });
 });
 
@@ -47,36 +37,35 @@ function progressUpdate(packet) {
 
     if (log.firstChild && log.firstChild.status === packet.status) {
         if ('progress' in packet) {
-            var progress = log.firstChild.querySelector('progress')
-            progress.value = packet.progress
+            var progress = log.firstChild.querySelector('progress');
+            progress.value = packet.progress;
         }
     } else {
         var line = document.createElement('div');
         line.status = packet.status;
-        var status = document.createElement('div')
-        status.className = 'status'
-        status.appendChild(document.createTextNode(packet.status))
-        line.appendChild(status)
+        var status = document.createElement('div');
+        status.className = 'status';
+        status.appendChild(document.createTextNode(packet.status));
+        line.appendChild(status);
 
         if ('progress' in packet) {
-            var progress = document.createElement('progress')
-            progress.value = packet.progress
-            progress.max = 1
-            line.appendChild(progress)
+            var progress = document.createElement('progress');
+            progress.value = packet.progress;
+            progress.max = 1;
+            line.appendChild(progress);
         }
 
         if (packet.status == 'done') {
-            log.innerHTML = ''
-            var pre = document.createElement('pre')
-            const txt=packet.data.text.replace(/\n\s*\n/g, '\n');
+            log.innerHTML = '';
+            var pre = document.createElement('pre');
+            const txt = packet.data.text.replace(/\n\s*\n/g, '\n');
             console.log(txt);
-            pre.appendChild(document.createTextNode(txt))
-            line.innerHTML = ''
-            line.appendChild(pre)
+            pre.appendChild(document.createTextNode(txt));
+            line.innerHTML = '';
+            line.appendChild(pre);
             document.getElementById("analyze-it").classList.remove("hidden");
         }
         log.insertBefore(line, log.firstChild);
-        
     }
 }
 
@@ -91,14 +80,12 @@ function recognizeAndResizeImage(file) {
         });
         worker.recognize(resizedBlob, $("#langsel").val())
             .progress(function(packet) {
-                // console.info(packet);
                 progressUpdate(packet);
             })
             .then(function(data) {
-                console.log(data);
                 progressUpdate({ status: 'done', data: data });
             });
-        // Display resized image
+
         const reader = new FileReader();
         reader.onload = function(event) {
             document.getElementById('selected-image').src = event.target.result;
@@ -106,7 +93,6 @@ function recognizeAndResizeImage(file) {
         reader.readAsDataURL(resizedBlob);
     });
 }
-
 
 function resizeImage(file) {
     return new Promise((resolve, reject) => {
@@ -119,6 +105,7 @@ function resizeImage(file) {
                 const canvas = document.createElement('canvas');
                 let width = img.width;
                 let height = img.height;
+
                 if (width > height) {
                     if (width > maxDimension) {
                         height *= maxDimension / width;
@@ -130,6 +117,7 @@ function resizeImage(file) {
                         height = maxDimension;
                     }
                 }
+
                 canvas.width = width;
                 canvas.height = height;
                 const ctx = canvas.getContext('2d');
