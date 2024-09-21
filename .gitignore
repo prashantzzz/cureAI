@@ -3,8 +3,9 @@
 *.fig
 
 # Ignore node_modules directory
-node_modules/
-uploads/
+node_modules/*
+package-lock.json
+uploads/*
 .vscode/
 
 # Avoid your project being littered with annoying .DS_Store files!
