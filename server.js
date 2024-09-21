@@ -19,10 +19,21 @@ function rem_dup(sentence) {
 }
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Function to clear the uploads folder
+async function clearUploadsFolder() {
+    try {
+        const files = await fs.readdir('uploads/');
+        await Promise.all(files.map(file => fs.unlink(path.join('uploads', file))));
+    } catch (err) {
+        console.error('Error clearing uploads folder:', err);
+    }
+}
  
 // Endpoint to handle image upload
 app.post('/upload', upload.single('image'), async (req, res) => {
     try {
+
         if (!req.file) {
             return res.status(400).json({ error: 'No file uploaded' });
         }
@@ -39,6 +50,8 @@ app.post('/upload', upload.single('image'), async (req, res) => {
         result.generated_text = rem_dup(result.generated_text);
 
         res.json({ text: result.generated_text });
+         // Clear the uploads folder after the image is processed
+         await clearUploadsFolder();
     } catch (error) {
         console.error('Error occurred during inference:', error);
         res.status(500).json({ error: 'An error occurred during inference' });
