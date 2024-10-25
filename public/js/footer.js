@@ -61,7 +61,7 @@ let appFooter = `
                 href="https://www.linkedin.com/in/prashantzzz/">Contact Developer</a>
             </li>
             <li>
-              <a href="https://www.upload-apk.com/daN7mWgvAnh10VM" class="flex w-40 h-14 bg-blue-900 text-white rounded-lg items-center justify-center cursor-pointer">
+              <a href="https://storage.appilix.com/uploads/app-apk-67160af93facd-1729497849.apk" class="flex w-40 h-14 bg-blue-900 text-white rounded-lg items-center justify-center cursor-pointer">
                 <div class="mr-3">
                     <svg viewBox="30 336.7 120.9 129.2" width="20">
                         <path fill="#FFD400" d="M119.2,421.2c15.3-8.4,27-14.8,28-15.3c3.2-1.7,6.5-6.2,0-9.7  c-2.1-1.1-13.4-7.3-28-15.3l-20.1,20.2L119.2,421.2z"/>
