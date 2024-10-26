@@ -167,13 +167,10 @@
     async function analyzeText() {
       const txt = document.getElementById("log").textContent;
       document.getElementById("log").textContent = "Loading insights...";
-      const prompt = `Below is the text from a medical prescription, extract medicine names, 
-      dosage and other essential info from it(if present): ${txt}. 
-      Mention usage, side effects of the medicines prescribed(if any). 
-      If it is not a medical prescription, Return: Couldn't analyze!, Upload a clear digital prescription.`;
+      const prompt = `Below is the text from a medical prescription, extract medicine names, dosage and other essential info from it(if present): ${txt}. Mention usage, side effects of the medicines prescribed(if any).`;
       console.log(txt);
       // Show loading animation
-      document.getElementById("loading-animation").classList.remove("hidden");
+      //document.getElementById("loading-animation").classList.remove("hidden");
 
       try {
         const model = genAI.getGenerativeModel({ model: "gemini-pro" });
@@ -200,8 +197,8 @@
         });
 
         // Display the output in the 'log' div
-        document.getElementById('loading-animation').classList.add('hidden');
-        document.getElementById("log").innerHTML =formattedLines.join("<br>");
+        document.getElementById("log").innerHTML =
+          formattedLines.join("<br>");
       } catch (error) {
         // Display the error message
         document.getElementById(
