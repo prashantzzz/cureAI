@@ -28,9 +28,9 @@ let appHeader = `
                 
             </ul>
         </nav>
-        <div class="hidden lg:block">
+        <!--div class="hidden lg:block">
             <a class="ds-btn ds-btn-primary ds-btn-wide" href="./LoginSignup.html">Login | Signup</a>
-        </div>
+        </div-->
 
         <!-- burger icon on mobile -->
         <nav class="nav__icon lg:hidden" aria-labelledby="header-nav-mobile">
