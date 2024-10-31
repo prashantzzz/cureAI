@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cureAI Tool</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href=".\src\img\aimed-icon.png" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./dist/assets/css/style.css" />
+</head>
+
+<style>
+  :root {
+    --green-theme: #34D399;
+    --green-dark: #059669;
+    --green-light: #f2fff8;
+  }
+
+  ::-webkit-scrollbar {
+    height: 10px;
+    width: 10px
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #efefef;
+    border-radius: 6px
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #d5d5d5;
+    border-radius: 6px
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c4c4c4
+  }
+
+  .hidden{
+    visibility: hidden;
+  }
+  .card {
+    /* background-color: var(--green-light); */
+    border: 1px solid var(--green-dark);
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    text-align: left;
+  }
+
+  .card h2 {
+    color: var(--green-dark);
+  }
+
+  .card h3 {
+    text-align: left;
+    /* Align headings to the left as well, if needed */
+  }
+
+  .card a {
+    color: var(--green-dark);
+    text-decoration: none;
+  }
+
+  .card a:hover {
+    text-decoration: underline;
+  }
+
+  .card ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+  }
+</style>
+
+<body class="bg-gray-100">
+
+  <!--Header-->
+  <header id="app-header"></header>
+  <script async src="./js/header.js"></script>
+
+  <div class="w-full m-0 p-0 bg-cover bg-bottom"
+    style="background-image:url('./src/img/cover.jpg'); max-height:2100px;">
+    <div class="font-extrabold container max-w-4xl mx-auto pt-28 pb-6 md:pb-10 text-center">
+
+      <div class="text-white text-2xl md:text-5xl sm:text-4xl">
+        Scan Tool
+      </div>
+    </div>
+  </div>
+
+  <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <main class="container mx-auto px-4 py-8">
+      <!-- Grid for parallel div blocks -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <!-- HTML form and image preview section -->
+        <div class="bg-white shadow-sm rounded-lg p-8">
+          <h1 class="text-2xl font-bold mb-6 text-center">Upload Medical Tool</h1>
+          <form id="imageForm" class="flex flex-col space-y-4">
+            <input type="file" id="imageInput" accept="image/*" required class="border border-gray-300 p-2 rounded-md">
+            <img id="imagePreview" src="" alt="Image Preview"
+              class="hidden w-full max-h-80 mt-4 rounded-md object-contain">
+            <button type="submit" id="sbmt" class="ds-btn ds-btn-primary ds-btn-wide mb-4">Submit</button>
+          </form>
+        </div>
+
+
+        <!-- Div for showing the extracted text -->
+        <div>
+          <div class="bg-white rounded-lg p-4 text-center  whitespace-normal">
+            <span id="startPre" class="block  whitespace-normal">
+              <div id="result"></div>
+            </span>
+
+            <button id="analyze-it" class="ds-btn ds-btn-primary ds-btn-wide my-4  hidden">Analyze it</button>
+            <div id="loading-animation" class="hidden">
+              <button disabled="" id="load-btn" type="button"
+                class="py-2.5 mt-5 px-5 mr-2 mb-4 text-sm font-medium text-gray-900 bg-white rounded-full border border-success border-double hover:bg-gray-100 hover:text-success focus:z-10 focus:ring-4 focus:outline-none focus:ring-success focus:text-sucess inline-flex items-center">
+                <svg aria-hidden="true" role="status"
+                  class="inline mr-2 w-4 h-4 text-gray-200 animate-spin dark:text-gray-600" viewBox="0 0 100 101"
+                  fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                    fill="currentColor"></path>
+                  <path
+                    d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                    fill="#1C64F2"></path>
+                </svg>
+                Loading...
+              </button>
+              <div class=" w-full max-w-md mx-auto">
+                <!-- <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900"></div> -->
+                <div class="w-full space-y-2 animate-pulse my-3">
+                  <div class="w-full h-12 bg-gray-200 rounded"></div>
+                  <div class="w-full h-32 bg-gray-200 rounded">
+                    <div class="space-y-2 p-5">
+                      <div class="h-5 bg-gray-300 rounded w-1/3"></div>
+                      <div class="h-5 bg-gray-300 rounded w-1/2"></div>
+                      <div class="h-5 bg-gray-300 rounded w-1/2"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-full space-y-2 animate-pulse my-6">
+                  <div class="w-full h-12 bg-gray-200 rounded"></div>
+                  <div class="w-full h-32 bg-gray-200 rounded">
+                    <div class="space-y-2 p-5">
+                      <div class="h-5 bg-gray-300 rounded w-1/3"></div>
+                      <div class="h-5 bg-gray-300 rounded w-1/2"></div>
+                      <div class="h-5 bg-gray-300 rounded w-1/2"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" id="toolcard" class="hidden">
+              <h2 class="text-2xl font-bold mb-4" id="toolName"></h2>
+              <div class="mb-4">
+                <h3 class="text-xl font-semibold">Steps to use:</h3>
+                <ul id="stepsList" class="mt-2 list-disc pl-5"></ul>
+              </div>
+              <div class="mb-4">
+                <h3 class="text-xl font-semibold">Website links:</h3>
+                <ul id="websiteLinks" class="mt-2 list-disc pl-5"></ul>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold">Video tutorial links:</h3>
+                <ul id="videoLinks" class="mt-2 list-disc pl-5"></ul>
+              </div>
+            </div>
+
+          </div>
+    </main>
+
+    <header id="app-footer"></header>
+    <script async src="./js/footer.js"></script>  
+
+    <script async src="dist/bundle.js"></script>
+    <header id="app-phone-nav"></header>
+    <script async src="./js/phone-nav.js"></script>  
+
+    <script>
+      // JavaScript for image handling
+      document.getElementById('imageInput').addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (file) {
+          document.getElementById("sbmt").classList.remove("hidden");
+          document.getElementById("toolcard").classList.add("hidden");
+          document.getElementById("analyze-it").classList.add("hidden");
+          const reader = new FileReader();
+          reader.onload = async function (e) {
+            const image = new Image();
+            image.onload = async function () {
+              const maxWidthOrHeight = 1000; // Maximum width or height
+
+              let width = image.width;
+              let height = image.height;
+
+              // Check if resizing is necessary
+              if (width > maxWidthOrHeight || height > maxWidthOrHeight) {
+                if (width > height) {
+                  height *= maxWidthOrHeight / width;
+                  width = maxWidthOrHeight;
+                } else {
+                  width *= maxWidthOrHeight / height;
+                  height = maxWidthOrHeight;
+                }
+              }
+
+              // Resize image using canvas
+              const canvas = document.createElement('canvas');
+              canvas.width = width;
+              canvas.height = height;
+              const ctx = canvas.getContext('2d');
+              ctx.drawImage(image, 0, 0, width, height);
+
+              // Convert canvas to Blob with reduced quality (e.g., 0.7)
+              canvas.toBlob(async function (blob) {
+                const resizedFile = new File([blob], file.name, {
+                  type: 'image/jpeg',
+                  lastModified: Date.now()
+                });
+
+                // Display resized image preview
+                const resizedDataURL = await new Promise((resolve) => {
+                  const reader = new FileReader();
+                  reader.onload = (e) => resolve(e.target.result);
+                  reader.readAsDataURL(resizedFile);
+                });
+                document.getElementById('imagePreview').src = resizedDataURL;
+                document.getElementById('imagePreview').classList.remove('hidden');
+
+                // Submit resized file
+                const formData = new FormData();
+                formData.append('image', resizedFile);
+
+                try {
+                  const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                  });
+                  const result = await response.json();
+                  document.getElementById('result').innerText = result.text;
+                  // document.getElementById('sbmt').classList.add('hidden');
+                  document.getElementById('analyze-it').classList.remove('hidden');
+                } catch (error) {
+                  console.error('Error occurred during inference:', error);
+                }
+              }, 'image/jpeg', 0.7); // Adjust quality as needed
+            };
+            image.src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        } else {
+          document.getElementById('imagePreview').classList.add('hidden');
+        }
+      });
+
+      document.getElementById('imageForm').addEventListener('submit', async function (event) {
+        event.preventDefault();
+        const imageInput = document.getElementById('imageInput');
+        if (imageInput.files.length === 0) {
+          alert('Please select an image file.');
+          return;
+        }
+        document.getElementById('loading-animation').classList.remove('hidden');
+        const formData = new FormData();
+        formData.append('image', imageInput.files[0]);
+
+        try {
+          const response = await fetch('/upload', {
+            method: 'POST',
+            body: formData
+          });
+          const result = await response.json();
+          document.getElementById('result').innerText = result.text;
+          // analyzeText();
+          document.getElementById('loading-animation').classList.add('hidden');
+          // document.getElementById("sbmt").classList.add("hidden");
+          document.getElementById("analyze-it").classList.remove("hidden");
+        } catch (error) {
+          console.error('Error occurred during inference:', error);
+        }
+
+      });
+    </script>
+
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'en',
+          ignoreWords: 'prescription,aimed,AI-MED,WHO',
+          includedLanguages: 'en,hi,bn,te,mr,ta,ur,gu,kn,or,ml,pa,fra,zho' // Add the languages you want to include, separated by commas
+        }, 'google_translate_element');
+      };
+    </script>
+
+
+    <script type="importmap">
+      {
+      "imports": {
+        "@google/generative-ai": "https://esm.run/@google/generative-ai"
+      }
+    }
+  </script>
+
+    <script type="module">
+      import { GoogleGenerativeAI } from "@google/generative-ai";
+
+      const API_KEY = "AIzaSyDkOS4Xjuy3F3xYdV_nXnsEU_HEhxZPmgw";
+      const genAI = new GoogleGenerativeAI(API_KEY);
+      let text1 = "";
+      async function analyzeText() {
+
+      let txt = document.getElementById("result").textContent;
+      const prompt = `Extract the medical tool name from "${txt}" and mention steps to use that tool, and give website and video tutorial links(if present).
+      Respond in the following json format:
+      {
+        "tool_name": "",
+        "steps_to_use": [
+          "Step 1: Description of first step",
+          "Step 2: Description of second step",
+          "Step 3: Description of third step",
+          "..."
+        ],
+        "website_links": [
+          {
+            "description": "",
+            "url": ""
+          },
+          {
+            "description": "",
+            "url": ""
+          }
+        ],
+        "video_tutorial_links": [
+          {
+            "description": "",
+            "url": ""
+          },
+          {
+            "description": "",
+            "url": ""
+          }
+        ]
+      }
+
+      If it is not a medical tool, set "tool_name": "Not a medical tool!"`;
+
+        // Show loading animation
+        document.getElementById("loading-animation").classList.remove("hidden");
+        try {
+          const model = genAI.getGenerativeModel({
+            model: "gemini-pro"
+          });
+          const result = await model.generateContent(prompt);
+          const response = await result.response;
+          text1 = await response.text();
+          console.log("AI Returned: " + text1);
+          if (text1 == "Not a medical tool!") {
+            alert("Not a medical tool!");
+            return;
+          }
+
+          
+          document.getElementById("toolcard").classList.remove("hidden");
+          let jsonData = "";
+          try {
+            jsonData = JSON.parse(text1);
+          } catch (error) {
+            console.error('JSON parsing error:', error);
+            document.getElementById("result").textContent = `Error: Couldn't analyze, please retry or try a new image.`;
+          }
+
+          if (jsonData.tool_name == "Not a medical tool!") {
+            alert("Upload a medical tool!");
+            return;
+          }
+          document.getElementById("toolName").innerText = jsonData.tool_name;
+          // console.log(jsonData.tool_name);
+
+          const stepsList = document.getElementById("stepsList");
+          stepsList.innerHTML = ''; // Clear previous entries
+          jsonData.steps_to_use.forEach(step => {
+            const li = document.createElement("li");
+            li.innerText = step;
+            stepsList.appendChild(li);
+          });
+
+          const websiteLinks = document.getElementById("websiteLinks");
+          websiteLinks.innerHTML = ''; // Clear previous entries
+          jsonData.website_links.forEach(link => {
+            const li = document.createElement("li");
+            const a = document.createElement("a");
+            a.href = link.url;
+            a.innerText = link.description;
+            a.target = "_blank";
+            li.appendChild(a);
+            websiteLinks.appendChild(li);
+          });
+          // Creating a link to search Google based on the tool name
+          const googleSearchLi = document.createElement("li");
+          const googleSearchLink = document.createElement("a");
+          googleSearchLink.href = `https://www.google.com/search?q=${encodeURIComponent(jsonData.tool_name)}`;
+          googleSearchLink.innerText = `Search Google for "${jsonData.tool_name}"`;
+          googleSearchLink.target = "_blank";
+          googleSearchLi.appendChild(googleSearchLink);
+          websiteLinks.appendChild(googleSearchLi);
+
+          const videoLinks = document.getElementById("videoLinks");
+          videoLinks.innerHTML = ''; // Clear previous entries
+          jsonData.video_tutorial_links.forEach(link => {
+            const li = document.createElement("li");
+            const a = document.createElement("a");
+            a.href = link.url;
+            a.innerText = link.description;
+            a.target = "_blank";
+            li.appendChild(a);
+            videoLinks.appendChild(li);
+          });
+
+          // Creating a link to search YouTube based on the tool name
+          const youtubeSearchLi = document.createElement("li");
+          const youtubeSearchLink = document.createElement("a");
+          youtubeSearchLink.href = `https://www.youtube.com/results?search_query=${encodeURIComponent(jsonData.tool_name.replace(" ", "+"))}`;
+          youtubeSearchLink.innerText = `Search YouTube for "${jsonData.tool_name}"`;
+          youtubeSearchLink.target = "_blank";
+          youtubeSearchLi.appendChild(youtubeSearchLink);
+          videoLinks.appendChild(youtubeSearchLi);
+
+        } catch (error) {
+          // Display the error message
+          document.getElementById("result").textContent = `Error: ${error.message.replace("[GoogleGenerativeAI Error]:", "")}`;
+        } finally {
+          // Hide loading animation
+          document.getElementById("loading-animation").classList.add("hidden");
+        }
+      }
+
+      document.getElementById("analyze-it").addEventListener("click", analyzeText);
+    </script>
+
+
+    <script type="text/javascript"
+      src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- <script src="./js/jquery-3.3.1.min.js"></script> -->
+    <!-- <script src="./js/fontawesome-4414288e8e.js"></script> -->
+
+  </body>
+
+</html>

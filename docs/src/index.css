@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Public Sans-SemiBold";
+  src: url("../../../src/fonts/PublicSans-SemiBold.woff2") format("woff2"),
+    url("../../../src/fonts/PublicSans-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Public Sans-Regular";
+  src: url("../../../src/fonts/PublicSans-Regular.woff2") format("woff2"),
+    url("../../../src/fonts/PublicSans-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Public Sans-Light";
+  src: url("../../../src/fonts/PublicSans-Light.woff2") format("woff2"),
+    url("../../../src/fonts/PublicSans-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root,
+  html {
+    @apply bg-transparent;
+  }
+
+  /********************
+    Set your base color & font for body here:
+    ********************/
+  * {
+    @apply text-base-300 font-secondary accent-primary selection:bg-primary selection:text-primary-content transition-all duration-150;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-primary text-primary;
+  }
+
+  i {
+    @apply text-inherit;
+  }
+
+  .bg-primary-gradient {
+    @apply bg-gradient-to-r from-secondary to-accent;
+  }
+
+  html.sr .load-hidden {
+    @apply invisible;
+  }
+
+  body {
+    overflow: overlay;
+  }
+}
+
+@layer components {
+  /********************
+    *** HEADER
+    ********************/
+  .nav__icon {
+    @apply w-[28px] h-[18px] relative rotate-0 cursor-pointer ease-in-out duration-500;
+  }
+
+  .nav__icon span {
+    @apply block absolute h-[3px] w-full bg-primary rounded-full opacity-100 left-0 rotate-0 ease-out duration-200;
+  }
+
+  .nav__icon span:nth-child(1) {
+    @apply top-0;
+  }
+
+  .nav__icon span:nth-child(2) {
+    @apply top-[6px] origin-[left_center];
+  }
+
+  .nav__icon span:nth-child(3) {
+    @apply top-[12px];
+  }
+
+  .nav__icon.is-clicked span:nth-child(1) {
+    @apply rotate-45 top-[6px];
+  }
+
+  .nav__icon.is-clicked span:nth-child(2) {
+    @apply w-0 opacity-0;
+  }
+
+  .nav__icon.is-clicked span:nth-child(3) {
+    @apply rotate-[-45deg] top-[6px];
+  }
+
+  .nav__mobile-menu {
+    @apply fixed top-[82px] left-[50%] translate-x-[-50%] w-11/12 p-4 rounded-md bg-white opacity-0 h-0 ease-in duration-200 z-[99];
+  }
+
+  .nav__mobile-menu.is-opened {
+    @apply opacity-100 h-fit;
+  }
+
+  .menu-open {
+    @apply overflow-hidden;
+  }
+
+  .menu-open main::after {
+    @apply content-[''] w-screen h-screen fixed top-0 left-0 z-[1] bg-[linear-gradient(to_bottom,_#2d314d,_transparent)];
+  }
+
+  /********************
+    *** BUTTONS
+    ********************/
+  .ds-btn {
+    @apply h-[unset] min-h-[unset] py-3.5 px-6 border-0 rounded-[21px] font-tertiary capitalize transition-opacity duration-150 hover:opacity-70;
+  }
+
+  .ds-btn-wide {
+    @apply w-[unset] min-w-[10rem];
+  }
+  .ds-btn-primary {
+    @apply bg-gradient-to-r from-secondary to-accent;
+  }
+
+  .ds-btn-ghost {
+    @apply hover:bg-neutral hover:text-neutral-content;
+  }
+
+  /********************
+    *** FORMS
+    ********************/
+
+  .ds-input {
+    @apply border border-solid border-neutral transition-all duration-200 focus:outline focus:outline-primary focus:border-primary;
+  }
+
+  .ds-input-error {
+    @apply border-error focus:outline-error focus:border-error;
+  }
+
+  .ds-input-success {
+    @apply border-success focus:outline-success focus:border-success;
+  }
+}

@@ -1,7 +1,8 @@
 *.sketch
 *.xd
 *.fig
-
+CUREAI.pptx
+ProjectReportReview1_21bit0524.pdf
 # Ignore node_modules directory
 node_modules/*
 package-lock.json

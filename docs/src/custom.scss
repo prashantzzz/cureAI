@@ -1,0 +1,9 @@
+// $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+
+// relative to compiled css (custom.css)
+$fa-font-path: "/../../../src/fonts/webfonts";
+
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
