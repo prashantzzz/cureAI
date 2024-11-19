@@ -26,6 +26,7 @@
     "tesseract.js": "^5.0.5"
   },
   "scripts": {
+    "start": "node server.js",
     "build": "webpack",
     "build-css": "tailwindcss -i ./src/index.css -o ./dist/assets/css/style.css --watch"
   }

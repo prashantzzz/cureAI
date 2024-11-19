@@ -72,19 +72,14 @@ function getLocalIpAddress() {
     return '127.0.0.1';
 }
 
-const PORT = process.env.PORT || 3000;
-const ipv4Address = getLocalIpAddress();
+// const PORT = process.env.PORT || 3000;
+// const ipv4Address = getLocalIpAddress();
 
-app.listen(PORT, '0.0.0.0', () => {
-    const url = `http://${ipv4Address}:${PORT}`;
-    console.log(`Server running on ${url}`);
+// app.listen(PORT, '0.0.0.0', () => {
+//     const url = `http://${ipv4Address}:${PORT}`;
+//     console.log(`Server running on ${url}`);
     
-    // qrcode.toString(url, { type: 'terminal' }, (err, qr) => {
-    //     if (err) {
-    //         console.error('Failed to generate QR code', err);
-    //     } else {
-    //         console.log('Scan the following QR code to access the server:');
-    //         console.log(qr);
-    //     }
-    // });
-});
+    
+// });
+
+module.exports = app;
