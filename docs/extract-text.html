@@ -161,8 +161,8 @@
     </script>
   <script type="module">
     import { GoogleGenerativeAI } from "@google/generative-ai";
-    const API_KEY = "AIzaSyDkOS4Xjuy3F3xYdV_nXnsEU_HEhxZPmgw";
-    const genAI = new GoogleGenerativeAI(API_KEY);
+    const prod = "AIzaSyDM_3WvqsH4pXv9zbGwJKqGfsGuW8Iq2Dw";
+    const genAI = new GoogleGenerativeAI(prod);
 
     async function analyzeText() {
       const txt = document.getElementById("log").textContent;
