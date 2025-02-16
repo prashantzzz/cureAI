@@ -8,7 +8,7 @@ const qrcode = require('qrcode');
 
 const app = express();
 const upload = multer({ dest: 'uploads/' });
-const HF_TOKEN = "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"; // Replace <YOUR_HF_TOKEN> with your actual Hugging Face token
+const HF_TOKEN = process.env.HF_TOKEN;; 
 const inference = new HfInference(HF_TOKEN);
 
 // Function to remove duplicate words
@@ -82,4 +82,10 @@ function getLocalIpAddress() {
     
 // });
 
-module.exports = app;
+// Start the server
+const PORT = process.env.PORT || 3000; // Use Render's PORT environment variable
+const server = app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+
+module.exports = { app, server };
