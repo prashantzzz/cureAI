@@ -108,7 +108,7 @@
           <div class="image-container bg-gray-200 rounded-lg overflow-hidden">
             <img id="selected-image" src="" class="max-h-80" alt="Selected Image" />
           </div>
-          <button id="analyze-it" class="ds-btn ds-btn-primary ds-btn-wide block w-full my-2 hidden">
+          <button id="analyze-it" class="ds-btn ds-btn-primary ds-btn-wide w-full my-2 hidden">
             Analyze It!
           </button>
         </div>
@@ -173,7 +173,7 @@
       //document.getElementById("loading-animation").classList.remove("hidden");
 
       try {
-        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-002" });
         const result = await model.generateContent(prompt);
         const response = await result.response;
         let text = await response.text();
