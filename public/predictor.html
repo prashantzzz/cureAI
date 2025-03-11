@@ -213,6 +213,7 @@
 },
   ...so on
 ]
+  Dont write anything else in the response, include only the json in requested format.
 `;
       try {
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-002" });
@@ -221,7 +222,7 @@
         let text = await response.text().replace("json","");
         text = text.replaceAll("```","");
         text = text.replaceAll("*","");
-        // console.log(text);
+        console.log(text);
  
         // Display the output in the 'analysis-result' div
         //document.getElementById("analysis-result").innerText= text;
