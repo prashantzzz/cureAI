@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const user = await account.get();
 
     if (user) {
-      console.log("entered");
+      // console.log("entered");
       const authBtnP = document.getElementById("auth-btn-phone");
       const authBtnD = document.getElementById("auth-btn-desktop");
       authBtnP.innerHTML = "Logout";
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
       authBtnP.addEventListener("click", logout);
       authBtnD.addEventListener("click", logout);
     } else {
-      console.log("not entered");
+      // console.log("not entered");
       authBtnP.innerHTML = "Login / Signup";
       authBtnD.innerHTML = "Login / Signup";
       authBtnP.removeEventListener("click", logout);
