@@ -78,14 +78,14 @@ function getLocalIpAddress() {
 // app.listen(PORT, '0.0.0.0', () => {
 //     const url = `http://${ipv4Address}:${PORT}`;
 //     console.log(`Server running on ${url}`);
-    
-    
 // });
 
 // Start the server
 const PORT = process.env.PORT || 3000; // Use Render's PORT environment variable
 const server = app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
+    const url = `http://localhost:${PORT}`;
+    console.log(`Server running on ${url}`);
 });
 
 module.exports = { app, server };
